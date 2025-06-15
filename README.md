@@ -40,7 +40,7 @@ The project is architected with a clean separation of concerns:
 ### Prerequisites
 
 *   [Node.js](https://nodejs.org/) and npm
-*   [Emscripten SDK](https://emscripten.org/docs/getting_started/downloads.html) (activated in your terminal)
+*   [Emscripten SDK](https://emscripten.org/docs/getting_started/downloads.html) (activated in your terminal everytime you start a new terminal)
 
 ### Installation & Running
 
@@ -56,7 +56,7 @@ The project is architected with a clean separation of concerns:
     ```
 
 3.  **Compile the C++ to WebAssembly:**
-    Run the compilation script. This command takes your C++ algorithm, compiles it, and places the output (`algorithms.js` and `algorithms.wasm`) in the `public/wasm` directory.
+    Run the compilation script. This command takes your C++ algorithm, compiles it, and places the output (`algorithms.js` and `algorithms.wasm`) in the `public/wasm` directory. Run this after everytime you made changes in `algorithms.cpp`.
     ```bash
     emcc -std=c++20 src/cpp/my_algorithm.cpp -o public/wasm/algorithms.js -O3 -s WASM=1 -s MODULARIZE=1 -s "EXPORT_NAME='createAlgoModule'" -s EXPORTED_RUNTIME_METHODS='["cwrap"]' --bind -I src/cpp/
     ```
@@ -71,7 +71,7 @@ The project is architected with a clean separation of concerns:
 
 Modifying the visualizer is incredibly simple:
 
-1.  **Open `src/cpp/my_algorithm.cpp`**. This is your dedicated playground.
+1.  **Open `src/cpp/algorithms.cpp`**. This is your dedicated playground.
 2.  **Write your logic** inside the `void run_my_algorithm(VCtx& v)` function.
 3.  Use the `v` handle to get data from the user input (e.g., `auto arr = v.get_vector<int>("arr");`) or create new visualizable objects (e.g., `auto my_stack = v.new_stack<int>("My Stack");`).
 4.  Re-run the `emcc` compilation command (Step 3 above) to see your new algorithm in action.

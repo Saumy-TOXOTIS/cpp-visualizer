@@ -58,7 +58,7 @@ The project is architected with a clean separation of concerns:
 3.  **Compile the C++ to WebAssembly:**
     Run the compilation script. This command takes your C++ algorithm, compiles it, and places the output (`algorithms.js` and `algorithms.wasm`) in the `public/wasm` directory. Run this after everytime you made changes in `algorithms.cpp`.
     ```bash
-    emcc -std=c++20 src/cpp/my_algorithm.cpp -o public/wasm/algorithms.js -O3 -s WASM=1 -s MODULARIZE=1 -s "EXPORT_NAME='createAlgoModule'" -s EXPORTED_RUNTIME_METHODS='["cwrap"]' --bind -I src/cpp/
+    emcc -std=c++20 src/cpp/algorithms.cpp -o public/wasm/algorithms.js -O3 -s WASM=1 -s MODULARIZE=1 -s "EXPORT_NAME='createAlgoModule'" -s EXPORTED_RUNTIME_METHODS='["cwrap"]' --bind -I src/cpp/
     ```
 
 4.  **Start the React development server:**
